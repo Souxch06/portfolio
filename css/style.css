@@ -132,6 +132,40 @@ footer {
   margin-top: 20px;
 }
 
+.footer-col {
+  text-align: center;
+}
+
+.footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.footer-socials a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4f83c2;
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  text-align: center;
+}
+
+.footer-socials a:hover {
+  background-color: #3a6699;
+  transform: translateY(-2px);
+}
+
 /* Bouton de retour en haut */
 #btnRetourHaut {
   display: none;
