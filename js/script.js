@@ -1,69 +1,56 @@
-// Variable JS 
+// Variables
 const boutonRetour = document.getElementById("btnRetourHaut");
-const nav = document.querySelector("nav");
-const liensNav = document.querySelectorAll("nav a[href^='#']");
-const sections = document.querySelectorAll("section");
+const navigation = document.querySelector("nav");
+const liensNavigation = [...document.querySelectorAll("nav a[href^='#']")];
+const sections = [...document.querySelectorAll("section")];
 
-// Fonction pour mesurer la hauteur réelle de la nav
-function getHauteurNav() {
-  return nav ? nav.offsetHeight : 0;
-}
+let sectionActive = null;
 
-// Fonction globale d'affichage du bouton et de gestion du scroll
-function gererScroll() {
+// Met à jour le bouton de retour
+function mettreAJourNavigation() {
   const positionScroll = window.scrollY || document.documentElement.scrollTop;
-  
-  if (positionScroll > 200) {
-    boutonRetour.style.display = "flex";
-  } else {
-    boutonRetour.style.display = "none";
-  }
-  let sectionActuelle = "";
-  const hauteurNav = getHauteurNav();
+  const hauteurNavigation = navigation ? navigation.offsetHeight : 0;
 
-  sections.forEach((section) => {
-    const sectionTop = section.offsetTop - hauteurNav - 50;
-    const sectionHauteur = section.offsetHeight;
+  boutonRetour.style.display = positionScroll > 200 ? "flex" : "none";
 
-    if (positionScroll >= sectionTop && positionScroll < sectionTop + sectionHauteur) {
-      sectionActuelle = section.getAttribute("id");
-    }
+  const sectionVisible =
+    sections.find((section) => {
+      const debutSection = section.offsetTop - hauteurNavigation - 50;
+      const finSection = debutSection + section.offsetHeight;
+
+      return positionScroll >= debutSection && positionScroll < finSection;
+    }) ?? null;
+
+  if (sectionVisible === sectionActive) return;
+
+  liensNavigation.forEach((lien) => {
+    lien.classList.toggle(
+      "active",
+      lien.hash === `#${sectionVisible?.id ?? ""}`,
+    );
   });
 
-  liensNav.forEach((lien) => {
-    lien.classList.remove("active");
-    if (lien.getAttribute("href") === `#${sectionActuelle}`) {
-      lien.classList.add("active");
-    }
-  });
+  sectionActive = sectionVisible;
 }
-gererScroll();
 
-// Écouteur unique sur le défilement
-window.addEventListener("scroll", gererScroll);
+mettreAJourNavigation();
+//Affichage pendant le défilement.
+window.addEventListener("scroll", mettreAJourNavigation);
 
-// Clic sur le bouton REH
+// Haut de la page avec un défilement fluide.
 boutonRetour.addEventListener("click", () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-// Clic sur les liens de nav
-liensNav.forEach((lien) => {
-  lien.addEventListener("click", function (e) {
-    e.preventDefault();
-    const targetId = this.getAttribute("href");
-    const targetSection = document.querySelector(targetId);
+// Fait défiler la page jusqu'à la section choisie dans le menu.
+liensNavigation.forEach((lien) => {
+  lien.addEventListener("click", (evenement) => {
+    evenement.preventDefault();
 
-    if (targetSection) {
-      const positionCible = targetSection.offsetTop - getHauteurNav();
+    const sectionCible = document.getElementById(lien.hash.slice(1));
+    if (!sectionCible) return;
 
-      window.scrollTo({
-        top: positionCible,
-        behavior: "smooth",
-      });
-    }
+    const positionCible = sectionCible.offsetTop - navigation.offsetHeight;
+    window.scrollTo({ top: positionCible, behavior: "smooth" });
   });
 });
