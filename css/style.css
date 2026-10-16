@@ -1,4 +1,4 @@
-/* Body */
+/* Base */
 body {
   margin: auto;
   background-color: #eeeeee;
@@ -15,19 +15,17 @@ header {
   border-bottom: 3px solid #4f83c2;
 }
 
-/* Titre Header */
 header h1 {
   font-size: 2.5rem;
   margin: 0 0 10px 0;
   letter-spacing: 1px;
 }
 
-/* Header Actions */
 .header-actions {
   margin-top: 20px;
 }
 
-/* Bouton CV*/
+/* Boutons et badges */
 .btn-primary {
   display: inline-block;
   background-color: #4f83c2;
@@ -36,16 +34,16 @@ header h1 {
   border-radius: 6px;
   text-decoration: none;
   font-weight: bold;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
-/* Bouton CV (passage souris) */
 .btn-primary:hover {
   background-color: #3a6699;
   transform: translateY(-2px);
 }
 
-/* Badge Header */
 header p.badge {
   display: inline-block;
   background-color: #4f83c2;
@@ -57,7 +55,39 @@ header p.badge {
   margin-top: 10px;
 }
 
-/* Menu navigation */
+.header-stats {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  max-width: 700px;
+  margin: 24px auto 0;
+}
+
+.header-stat {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 8px;
+  background-color: rgba(79, 131, 194, 0.25);
+}
+
+.header-stat strong,
+.header-stat span {
+  display: block;
+}
+
+.header-stat strong {
+  color: #ffffff;
+  font-size: 1.15rem;
+}
+
+.header-stat span {
+  margin-top: 4px;
+  color: #dbeafe;
+  font-size: 0.85rem;
+}
+
+/* Navigation */
 nav {
   background-color: #4f83c2;
   text-align: center;
@@ -68,8 +98,7 @@ nav {
   top: 0;
 }
 
-/* Menu navigation (liens) */
-nav a{
+nav a {
   display: inline-block;
   background-color: #4f83c2;
   color: white;
@@ -77,22 +106,22 @@ nav a{
   border-radius: 6px;
   text-decoration: none;
   font-weight: bold;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
 }
 
-/* Menu navigation (passage souris) */
 nav a:hover {
   background-color: #3a6699;
   transform: translateY(-2px);
 }
 
-/* main */
+/* Contenu */
 main {
   width: 80%;
   margin: auto;
 }
 
-/* Sections */
 section {
   background-color: white;
   margin-top: 20px;
@@ -101,28 +130,24 @@ section {
   border-radius: 10px;
 }
 
-/* Titres */
 h2 {
   color: #3f73b1;
   border-bottom: 1px solid #3f73b1;
 }
 
-/* Titres */
 h3 {
   color: #303746;
 }
 
-/* Texte en gras */
 strong {
   color: #3f73b1;
 }
 
-/* Listes */
 li {
   margin: 8px;
 }
 
-/* Pied de page */
+/* Footer */
 footer {
   background-color: #303746;
   color: white;
@@ -156,16 +181,88 @@ footer {
   text-decoration: none;
   font-weight: bold;
   font-size: 0.9rem;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
   text-align: center;
 }
 
-.footer-socials a:hover {
+.footer-socials a:hover,
+.copy-phone:hover {
   background-color: #3a6699;
   transform: translateY(-2px);
 }
 
-/* Bouton de retour en haut */
+.copy-phone {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4f83c2;
+  color: #ffffff;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.copy-phone:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* Notification de copie */
+.copy-status {
+  display: none;
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1100;
+  max-width: min(360px, calc(100vw - 48px));
+  margin: 0;
+  padding: 14px 18px;
+  border: 2px solid;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: bold;
+  line-height: 1.5;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  animation: notification-entree 0.25s ease-out;
+}
+
+.copy-status:not(:empty) {
+  display: block;
+}
+
+.copy-status.copy-success {
+  border-color: #8ee6a1;
+  background-color: #176b32;
+}
+
+.copy-status.copy-error {
+  border-color: #ffaaa4;
+  background-color: #a52a24;
+}
+
+@keyframes notification-entree {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Retour en haut */
 #btnRetourHaut {
   display: none;
   position: fixed;
@@ -195,13 +292,16 @@ footer {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Style pour les tableaux */
+/* Tableaux */
 table {
   width: 100%;
   max-width: 800px;
-  margin: 24px auto; 
+  margin: 24px auto;
   border-collapse: collapse;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
   border-radius: 8px;
   overflow: hidden;
   background-color: #ffffff;
@@ -211,4 +311,15 @@ th,
 td {
   padding: 12px 16px;
   text-align: left;
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 40px 15px 30px;
+  }
+
+  .header-stats {
+    flex-direction: column;
+    gap: 8px;
+  }
 }

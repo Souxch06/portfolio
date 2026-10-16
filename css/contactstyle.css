@@ -80,6 +80,41 @@ form {
   margin: 24px auto 0;
 }
 
+.contact-submit {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 6px;
+  background-color: #4f83c2;
+  color: #ffffff;
+  font: inherit;
+  font-weight: bold;
+  line-height: 1.2;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.contact-submit:hover {
+  background-color: #3a6699;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(48, 55, 70, 0.2);
+}
+
+.contact-submit:focus-visible {
+  outline: 2px solid #3a6699;
+  outline-offset: 3px;
+}
+
+.contact-submit:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
 .form-group {
   margin-bottom: 18px;
 }
