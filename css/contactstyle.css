@@ -1,0 +1,112 @@
+/* Styles propres au formulaire de contact. */
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0 8px;
+  padding: 10px 16px;
+  border: 2px solid #4f83c2;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #303746;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 3px 8px rgba(48, 55, 70, 0.15);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.back-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: #4f83c2;
+  color: #ffffff;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.back-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  transition: transform 0.2s ease;
+}
+
+.back-button:hover {
+  background-color: #eaf2fb;
+  color: #3a6699;
+  transform: translateX(-3px);
+  box-shadow: 0 5px 10px rgba(48, 55, 70, 0.2);
+}
+
+.back-button:hover .back-icon {
+  background-color: #3a6699;
+  transform: translateX(-2px);
+}
+
+.back-button:hover .back-icon svg {
+  transform: translateX(-1px);
+}
+
+.back-button:focus-visible {
+  outline: 2px solid #4f83c2;
+  outline-offset: 3px;
+}
+
+.back-button:active {
+  transform: translateX(-1px) scale(0.98);
+}
+
+@media (max-width: 600px) {
+  .back-button {
+    margin-top: 18px;
+  }
+}
+
+form {
+  max-width: 700px;
+  margin: 24px auto 0;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: #303746;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px 12px;
+  border: 1px solid #b9c4d1;
+  border-radius: 6px;
+  font: inherit;
+}
+
+.form-group textarea {
+  resize: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: 2px solid #4f83c2;
+  border-color: #4f83c2;
+}

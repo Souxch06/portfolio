@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Formulaire de contact de Lucas AFONSO." />
+    <title>Contact - AFONSO Lucas</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/contactstyle.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="header-container">
+        <h1>AFONSO Lucas</h1>
+        <p class="badge">Étudiant BTS SIO</p>
+        <p class="badge">Passionné de développement</p>
+        <div class="header-actions">
+          <a href="CV .pdf" class="btn-primary" target="_blank">Voir mon CV</a>
+        </div>
+      </div>
+    </header>
+
+    <nav>
+      <a href="index.html#identite">Identité</a>
+      <a href="index.html#formation">Formation</a>
+      <a href="index.html#experiences">Expériences</a>
+      <a href="index.html#competences">Compétences</a>
+      <a href="index.html#projets">Projets</a>
+      <a href="index.html#interets">Centres d'intérêt</a>
+    </nav>
+
+    <main>
+      <a href="index.html" class="back-button" aria-label="Retourner à la page d'accueil">
+        <span class="back-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <path d="M19 12H5M11 18l-6-6 6-6" />
+          </svg>
+        </span>
+        Retour à l'accueil
+      </a>
+      <section id="contact">
+        <h2>Me contacter</h2>
+        <p>Utilisez ce formulaire pour m'envoyer un message.</p>
+        <form
+          action="https://formsubmit.co/lucasafonso0726@gmail.com"
+          method="post"
+        >
+          <input type="hidden" name="_subject" value="Nouveau message depuis le site" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="true" />
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" hidden />
+          <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Adresse email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary">Envoyer le message</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; AFONSO Lucas - Septembre / Octobre 2026</p>
+    </footer>
+  </body>
+</html>
