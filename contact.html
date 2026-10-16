@@ -30,22 +30,38 @@
           </div>
         </div>
         <div class="header-actions">
-          <a href="CV .pdf" class="btn-primary" target="_blank">Voir mon CV</a>
+          <a href="CV .pdf" class="btn-primary" target="_blank" rel="noopener"
+            >Voir mon CV</a
+          >
         </div>
       </div>
     </header>
 
-    <nav>
-      <a href="index.html#identite">Identité</a>
-      <a href="index.html#formation">Formation</a>
-      <a href="index.html#experiences">Expériences</a>
-      <a href="index.html#competences">Compétences</a>
-      <a href="index.html#projets">Projets</a>
-      <a href="index.html#interets">Centres d'intérêt</a>
+    <nav aria-label="Navigation principale">
+      <button
+        class="mobile-menu-button"
+        type="button"
+        aria-expanded="false"
+        aria-controls="menu-navigation"
+      >
+        ☰ Menu
+      </button>
+      <div id="menu-navigation" class="menu-navigation">
+        <a href="index.html#identite">Identité</a>
+        <a href="index.html#formation">Formation</a>
+        <a href="index.html#experiences">Expériences</a>
+        <a href="index.html#competences">Compétences</a>
+        <a href="index.html#projets">Projets</a>
+        <a href="index.html#interets">Centres d'intérêt</a>
+      </div>
     </nav>
 
     <main>
-      <a href="index.html" class="back-button" aria-label="Retourner à la page d'accueil">
+      <a
+        href="index.html"
+        class="back-button"
+        aria-label="Retourner à la page d'accueil"
+      >
         <span class="back-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" focusable="false">
             <path d="M19 12H5M11 18l-6-6 6-6" />
@@ -60,10 +76,20 @@
           action="https://formsubmit.co/lucasafonso0726@gmail.com"
           method="post"
         >
-          <input type="hidden" name="_subject" value="Nouveau message depuis le site" />
+          <input
+            type="hidden"
+            name="_subject"
+            value="Nouveau message depuis le site"
+          />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_captcha" value="true" />
-          <input type="text" name="_honey" tabindex="-1" autocomplete="off" hidden />
+          <input
+            type="text"
+            name="_honey"
+            tabindex="-1"
+            autocomplete="off"
+            hidden
+          />
           <div class="form-group">
             <label for="nom">Nom</label>
             <input type="text" id="nom" name="nom" required />
@@ -76,17 +102,26 @@
             <label for="message">Message</label>
             <textarea id="message" name="message" rows="6" required></textarea>
           </div>
-          <button type="submit" class="contact-submit">Envoyer le message</button>
+          <button type="submit" class="contact-submit">
+            Envoyer le message
+          </button>
         </form>
       </section>
     </main>
 
     <footer>
       <div class="footer-col">
-        <h4> Me retrouver </h4>
+        <h4>Me retrouver</h4>
         <div class="footer-socials">
-          <a href="https://klyx.lol/souxch" target="_blank" rel="noopener">Mes autres liens</a>
-          <a href="https://www.linkedin.com/in/lucas-afonso-4b09b1435" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://klyx.lol/souxch" target="_blank" rel="noopener"
+            >Mes autres liens</a
+          >
+          <a
+            href="https://www.linkedin.com/in/lucas-afonso-4b09b1435"
+            target="_blank"
+            rel="noopener"
+            >LinkedIn</a
+          >
           <a href="mailto:lucasafonso0726@gmail.com">Email</a>
           <button type="button" class="copy-phone" data-phone="06 50 06 08 55">
             Téléphone

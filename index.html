@@ -30,11 +30,15 @@
       </div>
     </div>
     <div class="header-actions">
-      <a href="CV .pdf" class="btn-primary" target="_blank">Voir mon CV</a>
+      <a href="CV .pdf" class="btn-primary" target="_blank" rel="noopener">Voir mon CV</a>
     </div>
   </div>
 </header>
-  <nav>
+  <nav aria-label="Navigation principale">
+    <button class="mobile-menu-button" type="button" aria-expanded="false" aria-controls="menu-navigation">
+      ☰ Menu
+    </button>
+    <div id="menu-navigation" class="menu-navigation">
     <a href="#identite">Identité</a>
     <a href="#formation">Formation</a>
     <a href="#experiences">Expériences</a>
@@ -42,6 +46,7 @@
     <a href="#projets">Projets</a>
     <a href="#interets">Centres d'intérêt</a>
     <a href="contact.html" class="btn-secondary">Contact</a>
+    </div>
   </nav>
   <main>
     <!-- Mon identité -->
@@ -64,7 +69,7 @@
     <!-- Ma formation -->
     <section id="formation">
       <h2>Ma formation</h2>
-      <table border="1">
+      <table>
         <thead>
           <tr>
             <th scope="col">Année</th>
@@ -90,7 +95,7 @@
     <!-- Mes expériences -->
     <section id="experiences">
       <h2>Mes expériences</h2>
-      <table border="1">
+      <table>
         <thead>
           <tr>
             <th scope="col">Période</th>

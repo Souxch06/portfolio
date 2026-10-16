@@ -3,6 +3,8 @@ const barreNavigation = document.querySelector("nav");
 const liensInternes = document.querySelectorAll("nav a[href^='#']");
 const sections = document.querySelectorAll("section");
 const boutonsTelephone = document.querySelectorAll(".copy-phone");
+const boutonMenu = document.querySelector(".mobile-menu-button");
+const menuNavigation = document.querySelector(".menu-navigation");
 
 // Affiche ou masque le bouton de retour en haut.
 function afficherBoutonRetour() {
@@ -43,6 +45,23 @@ function mettreAJourPage() {
 // Gestion du défilement.
 mettreAJourPage();
 window.addEventListener("scroll", mettreAJourPage);
+
+// Ouvre et ferme le menu sur mobile.
+if (boutonMenu && menuNavigation) {
+  boutonMenu.addEventListener("click", () => {
+    const menuOuvert = barreNavigation.classList.toggle("menu-open");
+    boutonMenu.setAttribute("aria-expanded", menuOuvert);
+    boutonMenu.textContent = menuOuvert ? "✕ Fermer" : "☰ Menu";
+  });
+
+  menuNavigation.querySelectorAll("a").forEach((lien) => {
+    lien.addEventListener("click", () => {
+      barreNavigation.classList.remove("menu-open");
+      boutonMenu.setAttribute("aria-expanded", "false");
+      boutonMenu.textContent = "☰ Menu";
+    });
+  });
+}
 
 // Retour fluide en haut de la page.
 if (boutonRetourHaut) {
