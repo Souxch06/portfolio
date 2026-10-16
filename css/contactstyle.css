@@ -71,7 +71,17 @@
 
 @media (max-width: 600px) {
   .back-button {
+    width: 100%;
+    justify-content: center;
+    margin: 16px 0 4px;
+  }
+
+  form {
     margin-top: 18px;
+  }
+
+  .form-group {
+    margin-bottom: 14px;
   }
 }
 
