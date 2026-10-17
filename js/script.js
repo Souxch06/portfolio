@@ -14,7 +14,7 @@ function afficherBoutonRetour() {
   boutonRetourHaut.style.display = pageDefilee ? "flex" : "none";
 }
 
-// Met en évidence le lien correspondant à la section visible.
+// Met le lien correspondant à la section visible.
 function mettreAJourSectionActive() {
   if (!barreNavigation || sections.length === 0) return;
 
@@ -63,7 +63,7 @@ if (boutonMenu && menuNavigation) {
   });
 }
 
-// Retour fluide en haut de la page.
+// Retour en haut de la page.
 if (boutonRetourHaut) {
   boutonRetourHaut.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });

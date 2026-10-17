@@ -1,157 +1,101 @@
-/* Styles propres au formulaire de contact. */
+/* Styles propres à la page de contact. */
+
+/* Bouton de retour à l'accueil. */
 .back-button {
+  /* Place le texte et l'icône sur la même ligne. */
   display: inline-flex;
+  width: fit-content;
   align-items: center;
-  gap: 12px;
-  margin: 24px 0 8px;
-  padding: 10px 16px;
-  border: 2px solid #4f83c2;
+  gap: 10px;
+
+  /* Espace autour et à l'intérieur du bouton. */
+  margin: 20px 0 5px;
+  padding: 8px 12px;
+
+  /* Apparence du bouton. */
+  border: 2px solid #3f73b1;
   border-radius: 8px;
-  background-color: #ffffff;
-  color: #303746;
+  background: linear-gradient(135deg, #5d94d3, #3f73b1);
+  color: #ffffff;
   font-weight: bold;
   text-decoration: none;
-  box-shadow: 0 3px 8px rgba(48, 55, 70, 0.15);
+  box-shadow: 0 4px 8px rgba(48, 55, 70, 0.2);
   transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
     transform 0.2s ease,
-    box-shadow 0.2s ease;
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
 }
 
-.back-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
+/* Change l'apparence du bouton au survol. */
+.back-button:hover {
+  background: linear-gradient(135deg, #6ea4e2, #2f5989);
+  border-color: #2f5989;
+  transform: translateY(-3px);
+  box-shadow: 0 7px 12px rgba(48, 55, 70, 0.3);
+}
+
+/* Réduit l'effet de déplacement pendant le clic. */
+.back-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(48, 55, 70, 0.2);
+}
+
+/* Formulaire de contact. */
+form {
+  /* Organise les champs les uns sous les autres. */
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  margin: 20px auto 0;
+}
+
+/* Groupe composé d'une étiquette et d'un champ. */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+/* Espacement et mise en valeur des étiquettes. */
+.form-group label {
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+/* Style commun aux champs texte et à la zone de message. */
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #b9c4d1;
+  border-radius: 5px;
+  font: inherit;
+}
+
+/* Indique clairement le champ actuellement sélectionné. */
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: 2px solid #4f83c2;
+}
+
+/* Bouton d'envoi du formulaire. */
+.contact-submit {
+  width: 100%;
+  padding: 12px;
+  border: 0;
+  border-radius: 6px;
   background-color: #4f83c2;
-  color: #ffffff;
+  color: white;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
   transition:
     background-color 0.2s ease,
     transform 0.2s ease;
 }
 
-.back-icon svg {
-  width: 16px;
-  height: 16px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 2;
-  transition: transform 0.2s ease;
-}
-
-.back-button:hover {
-  background-color: #eaf2fb;
-  color: #3a6699;
-  transform: translateX(-3px);
-  box-shadow: 0 5px 10px rgba(48, 55, 70, 0.2);
-}
-
-.back-button:hover .back-icon {
-  background-color: #3a6699;
-  transform: translateX(-2px);
-}
-
-.back-button:hover .back-icon svg {
-  transform: translateX(-1px);
-}
-
-.back-button:focus-visible {
-  outline: 2px solid #4f83c2;
-  outline-offset: 3px;
-}
-
-.back-button:active {
-  transform: translateX(-1px) scale(0.98);
-}
-
-@media (max-width: 600px) {
-  .back-button {
-    width: 100%;
-    justify-content: center;
-    margin: 16px 0 4px;
-  }
-
-  form {
-    margin-top: 18px;
-  }
-
-  .form-group {
-    margin-bottom: 14px;
-  }
-}
-
-form {
-  max-width: 700px;
-  margin: 24px auto 0;
-}
-
-.contact-submit {
-  display: block;
-  width: 100%;
-  margin-top: 8px;
-  padding: 12px 20px;
-  border: 0;
-  border-radius: 6px;
-  background-color: #4f83c2;
-  color: #ffffff;
-  font: inherit;
-  font-weight: bold;
-  line-height: 1.2;
-  cursor: pointer;
-  transition:
-    background-color 0.2s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
+/* Change la couleur et soulève légèrement le bouton au survol. */
 .contact-submit:hover {
-  background-color: #3a6699;
+  background-color: #2f5989;
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(48, 55, 70, 0.2);
-}
-
-.contact-submit:focus-visible {
-  outline: 2px solid #3a6699;
-  outline-offset: 3px;
-}
-
-.contact-submit:active {
-  transform: translateY(0);
-  box-shadow: none;
-}
-
-.form-group {
-  margin-bottom: 18px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 6px;
-  color: #303746;
-  font-weight: bold;
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 10px 12px;
-  border: 1px solid #b9c4d1;
-  border-radius: 6px;
-  font: inherit;
-}
-
-.form-group textarea {
-  resize: none;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: 2px solid #4f83c2;
-  border-color: #4f83c2;
 }
