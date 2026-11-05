@@ -1,115 +1,119 @@
+// Éléments de la page utilisés par le script.
 const boutonRetourHaut = document.getElementById("btnRetourHaut");
 const barreNavigation = document.querySelector("nav");
-const liensInternes = document.querySelectorAll("nav a[href^='#']");
+const liensNavigation = document.querySelectorAll("nav a[href^='#']");
 const sections = document.querySelectorAll("section");
 const boutonsTelephone = document.querySelectorAll(".copy-phone");
-const boutonMenu = document.querySelector(".mobile-menu-button");
-const menuNavigation = document.querySelector(".menu-navigation");
 
-// Affiche ou masque le bouton de retour en haut.
-function afficherBoutonRetour() {
-  if (!boutonRetourHaut) return;
+// ==================================================
+// BOUTON RETOUR EN HAUT
+// ==================================================
 
-  const pageDefilee = window.scrollY > 200;
-  boutonRetourHaut.style.display = pageDefilee ? "flex" : "none";
+function afficherOuCacherBouton() {
+  // Le bouton apparaît seulement après un peu de défilement.
+  if (window.scrollY > 200) {
+    boutonRetourHaut.style.display = "flex";
+  } else {
+    boutonRetourHaut.style.display = "none";
+  }
 }
 
-// Met le lien correspondant à la section visible.
-function mettreAJourSectionActive() {
-  if (!barreNavigation || sections.length === 0) return;
-
-  const positionScroll = window.scrollY || document.documentElement.scrollTop;
-  const hauteurNavigation = barreNavigation.offsetHeight;
-  let sectionVisible = null;
-
-  sections.forEach((section) => {
-    const debutSection = section.offsetTop - hauteurNavigation - 50;
-    const finSection = debutSection + section.offsetHeight;
-
-    if (positionScroll >= debutSection && positionScroll < finSection) {
-      sectionVisible = section.id;
-    }
-  });
-
-  liensInternes.forEach((lien) => {
-    const idActif = sectionVisible ? `#${sectionVisible}` : "";
-    lien.classList.toggle("active", lien.hash === idActif);
-  });
-}
-
-function mettreAJourPage() {
-  afficherBoutonRetour();
-  mettreAJourSectionActive();
-}
-
-// Gestion du défilement.
-mettreAJourPage();
-window.addEventListener("scroll", mettreAJourPage);
-
-// Ouvre et ferme le menu sur mobile.
-if (boutonMenu && menuNavigation) {
-  boutonMenu.addEventListener("click", () => {
-    const menuOuvert = barreNavigation.classList.toggle("menu-open");
-    boutonMenu.setAttribute("aria-expanded", menuOuvert);
-    boutonMenu.textContent = menuOuvert ? "✕ Fermer" : "☰ Menu";
-  });
-
-  menuNavigation.querySelectorAll("a").forEach((lien) => {
-    lien.addEventListener("click", () => {
-      barreNavigation.classList.remove("menu-open");
-      boutonMenu.setAttribute("aria-expanded", "false");
-      boutonMenu.textContent = "☰ Menu";
-    });
-  });
-}
-
-// Retour en haut de la page.
+// Ce bouton existe uniquement sur la page d'accueil.
 if (boutonRetourHaut) {
+  window.addEventListener("scroll", afficherOuCacherBouton);
+
   boutonRetourHaut.addEventListener("click", () => {
+    // Retour en haut avec un défilement doux.
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }
 
-// Défilement fluide vers les sections.
-liensInternes.forEach((lien) => {
+// ==================================================
+// LIEN ACTIF DANS LA NAVIGATION
+// ==================================================
+
+function trouverSectionVisible() {
+  const positionActuelle = window.scrollY;
+  const hauteurNavigation = barreNavigation.offsetHeight;
+
+  // On cherche la section qui se trouve à la position actuelle.
+  for (const section of sections) {
+    const hautDeLaSection = section.offsetTop - hauteurNavigation - 50;
+    const basDeLaSection = hautDeLaSection + section.offsetHeight;
+
+    if (
+      positionActuelle >= hautDeLaSection &&
+      positionActuelle < basDeLaSection
+    ) {
+      return section.id;
+    }
+  }
+
+  return "";
+}
+
+function mettreAJourLienActif() {
+  const idSectionVisible = trouverSectionVisible();
+
+  for (const lien of liensNavigation) {
+    // Le lien de la section visible reçoit la classe "active".
+    const lienVersLaSection =
+      lien.getAttribute("href") === `#${idSectionVisible}`;
+    lien.classList.toggle("active", lienVersLaSection);
+  }
+}
+
+if (barreNavigation) {
+  mettreAJourLienActif();
+  window.addEventListener("scroll", mettreAJourLienActif);
+}
+
+// ==================================================
+// DÉFILEMENT VERS UNE SECTION
+// ==================================================
+
+for (const lien of liensNavigation) {
   lien.addEventListener("click", (evenement) => {
+    // On gère nous-mêmes le défilement pour tenir compte de la navigation.
     evenement.preventDefault();
 
-    const idSection = lien.hash.slice(1);
+    const idSection = lien.getAttribute("href").substring(1);
     const section = document.getElementById(idSection);
+
     if (!section || !barreNavigation) return;
 
-    const positionSection = section.offsetTop - barreNavigation.offsetHeight;
+    // On retire la hauteur de la navigation pour ne pas cacher le titre.
+    const positionSection =
+      section.offsetTop - barreNavigation.offsetHeight;
     window.scrollTo({ top: positionSection, behavior: "smooth" });
   });
-});
+}
 
-// Copie le numéro de téléphone dans le presse-papiers.
-boutonsTelephone.forEach((bouton) => {
-  let minuteurNotification;
+// ==================================================
+// COPIE DU NUMÉRO DE TÉLÉPHONE
+// ==================================================
 
-  bouton.addEventListener("click", async () => {
-    const numeroTelephone = bouton.dataset.phone;
-    const footer = bouton.closest(".footer-col");
-    const message = footer ? footer.querySelector(".copy-status") : null;
+function copierNumero(bouton) {
+  // Le numéro vient de l'attribut data-phone du bouton.
+  const numero = bouton.dataset.phone;
+  const piedDePage = bouton.closest(".footer-col");
+  const message = piedDePage.querySelector(".copy-status");
 
-    if (!numeroTelephone || !message) return;
-
-    try {
-      await navigator.clipboard.writeText(numeroTelephone);
-      message.className = "copy-status copy-success";
-      message.textContent = "Numéro copié dans le presse-papiers.";
-    } catch (erreur) {
-      message.className = "copy-status copy-error";
+  // On affiche un message selon que la copie fonctionne ou non.
+  navigator.clipboard.writeText(numero).then(
+    () => {
+      message.textContent = "Le numéro a bien été copié.";
+    },
+    (erreur) => {
+      console.error("La copie du numéro a échoué :", erreur);
       message.textContent =
-        "Impossible de copier le numéro. Vous pouvez le sélectionner manuellement.";
-      console.error("La copie du numéro de téléphone a échoué.", erreur);
-    }
+        "La copie a échoué. Vous pouvez recopier le numéro : " + numero;
+    },
+  );
+}
 
-    clearTimeout(minuteurNotification);
-    minuteurNotification = setTimeout(() => {
-      message.textContent = "";
-      message.className = "copy-status";
-    }, 3500);
+for (const bouton of boutonsTelephone) {
+  bouton.addEventListener("click", () => {
+    copierNumero(bouton);
   });
-});
+}

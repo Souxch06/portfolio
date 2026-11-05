@@ -1,4 +1,8 @@
-/* Je regroupe ici les styles communs aux deux pages du portfolio. */
+/* ========================================================================== */
+/*                         STYLES GENERALES                                   */
+/* ========================================================================== */
+
+/* Les dimensions incluent aussi les bordures et les espacements intérieurs. */
 * {
   box-sizing: border-box;
 }
@@ -10,7 +14,11 @@ body {
   font-family: Arial, sans-serif;
 }
 
-/* L'en-tête est organisé en colonne avec flexbox. */
+/* ========================================================================== */
+/*                          HEADER                                            */
+/* ========================================================================== */
+
+/* En-tête de la page */
 header {
   padding: 45px 20px 35px;
   background-color: #303746;
@@ -19,17 +27,20 @@ header {
   text-align: center;
 }
 
+/* Flexbox permet d'empiler et de centrer les éléments. */
 .header-container {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+/* Titre */
 header h1 {
   margin: 0 0 10px;
   font-size: 2.5rem;
 }
 
+/* Petits badges de présentation */
 header p.badge {
   display: inline-block;
   margin: 5px;
@@ -41,6 +52,7 @@ header p.badge {
   font-weight: bold;
 }
 
+/* Stats */
 .header-stats {
   display: flex;
   justify-content: center;
@@ -50,6 +62,7 @@ header p.badge {
   margin-top: 22px;
 }
 
+/* Une case par statistique */
 .header-stat {
   flex: 1;
   padding: 12px;
@@ -68,16 +81,21 @@ header p.badge {
   font-size: 0.85rem;
 }
 
+/* Centre le bouton du CV */
 .header-actions {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
+/* ========================================================================== */
+/*                                 NAV                                        */
+/* ========================================================================== */
 
-/* Les liens principaux sont alignés sur une ligne grâce à flexbox. */
+/* La navigation reste visible en haut quand on défile */
 nav {
   position: sticky;
   top: 0;
+  /* La navigation passe au-dessus de tous */
   z-index: 1;
   width: 100%;
   padding: 12px;
@@ -85,6 +103,7 @@ nav {
   text-align: center;
 }
 
+/* Aligne les liens du nav */
 .menu-navigation {
   display: flex;
   flex-wrap: wrap;
@@ -92,6 +111,7 @@ nav {
   gap: 5px;
 }
 
+/* Nav */
 nav a,
 .btn-primary,
 .footer-socials a,
@@ -101,6 +121,7 @@ nav a,
   font-weight: bold;
 }
 
+/* Apparence des liens */
 nav a {
   padding: 9px 10px;
   border-radius: 5px;
@@ -109,6 +130,7 @@ nav a {
     transform 0.2s ease;
 }
 
+/* Couleur au survol et couleur du lien de la section actuelle. */
 nav a:hover,
 nav a.active,
 .btn-primary:hover,
@@ -117,6 +139,17 @@ nav a.active,
   background-color: #2f5989;
 }
 
+nav a:focus-visible,
+.btn-primary:focus-visible,
+.footer-socials a:focus-visible,
+.copy-phone:focus-visible,
+#btnRetourHaut:focus-visible {
+  /* Indique clairement l'élément sélectionné au clavier. */
+  outline: 3px solid #facc15;
+  outline-offset: 3px;
+}
+
+/* Bouton CV */
 .btn-primary {
   padding: 10px 20px;
   border-radius: 6px;
@@ -126,6 +159,7 @@ nav a.active,
     transform 0.2s ease;
 }
 
+/* Petit déplacement vers le haut au survol. */
 nav a:hover,
 .btn-primary:hover,
 .footer-socials a:hover,
@@ -133,11 +167,11 @@ nav a:hover,
   transform: translateY(-2px);
 }
 
-.mobile-menu-button {
-  display: none;
-}
+/* ========================================================================== */
+/*                         CONTENU PRINCIPAL                                  */
+/* ========================================================================== */
 
-/* Chaque partie du portfolio est placée l'une sous l'autre. */
+/* Contenu principal centré */
 main {
   display: flex;
   flex-direction: column;
@@ -146,6 +180,7 @@ main {
   margin: auto;
 }
 
+/* Sections (formation, ...) */
 section {
   margin-top: 20px;
   padding: 20px;
@@ -172,18 +207,24 @@ li {
   margin: 8px;
 }
 
-/* Le tableau peut défiler horizontalement si l'écran est trop petit. */
+/* ========================================================================== */
+/*                         TABLEAUX                                           */
+/* ========================================================================== */
+
+/* Évite que le tableau dépasse de son conteneur. */
 .table-container {
   width: 100%;
   overflow-x: auto;
 }
 
+/* Tableau sur toute la largeur */
 table {
   width: 100%;
   min-width: 650px;
   border-collapse: collapse;
 }
 
+/* Cellules du tableau */
 th,
 td {
   padding: 10px;
@@ -191,11 +232,16 @@ td {
   text-align: left;
 }
 
+/* En-tête du tableau */
 th {
   background-color: #dbeafe;
 }
 
-/* Le pied de page contient une ligne de liens flexible. */
+/* ========================================================================== */
+/*                                  FOOTER                                    */
+/* ========================================================================== */
+
+/* Footer centré */
 footer {
   display: flex;
   flex-direction: column;
@@ -208,10 +254,7 @@ footer {
   text-align: center;
 }
 
-.footer-col {
-  width: 100%;
-}
-
+/* Liens et bouton du pied de page. */
 .footer-socials {
   display: flex;
   flex-wrap: wrap;
@@ -220,6 +263,7 @@ footer {
   margin-top: 10px;
 }
 
+/* Même apparence pour les liens et le bouton du pied de page. */
 .footer-socials a,
 .copy-phone {
   padding: 8px 14px;
@@ -234,31 +278,17 @@ footer {
 }
 
 .copy-status {
-  display: none;
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  padding: 12px;
-  border-radius: 6px;
-  color: white;
-  font-weight: bold;
+  min-height: 1.2em;
+  margin: 10px 0 0;
 }
 
-.copy-status:not(:empty) {
-  display: block;
-}
+/* ========================================================================== */
+/*                         BOUTON RETOUR EN HAUT                              */
+/* ========================================================================== */
 
-.copy-success {
-  background-color: #176b32;
-}
-
-.copy-error {
-  background-color: #a52a24;
-}
-
-/* Le bouton est caché par défaut et affiché par le JavaScript après le défilement. */
 #btnRetourHaut {
   display: none;
+  /* Le bouton reste au même endroit à l'écran pendant le défilement. */
   position: fixed;
   right: 25px;
   bottom: 25px;
@@ -281,80 +311,4 @@ footer {
 #btnRetourHaut:hover {
   background-color: #2f5989;
   transform: translateY(-5px);
-}
-
-@media (max-width: 600px) {
-  header {
-    padding: 30px 12px;
-  }
-
-  header h1 {
-    font-size: 2rem;
-  }
-
-  .header-stats {
-    flex-direction: column;
-    gap: 7px;
-  }
-
-  .header-stat {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    text-align: left;
-  }
-
-  .header-stat span {
-    text-align: right;
-  }
-
-  .btn-primary {
-    width: 100%;
-  }
-
-  .mobile-menu-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    border: 0;
-    border-radius: 5px;
-    background-color: #2f5989;
-    color: white;
-    font: inherit;
-    font-weight: bold;
-    cursor: pointer;
-  }
-
-  .mobile-menu-button:hover {
-    background-color: #24466d;
-  }
-
-  .menu-navigation {
-    display: none;
-    flex-direction: column;
-    padding-top: 8px;
-  }
-
-  nav.menu-open .menu-navigation {
-    display: flex;
-  }
-
-  .menu-navigation a {
-    width: 100%;
-  }
-
-  main {
-    width: 100%;
-    padding: 0 10px;
-  }
-
-  section {
-    margin-top: 10px;
-    padding: 15px;
-  }
-
-  .footer-socials a,
-  .copy-phone {
-    flex: 1 1 40%;
-  }
 }

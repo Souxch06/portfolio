@@ -1,18 +1,24 @@
-/* Styles propres à la page de contact. */
+/* ========================================================================== */
+/*                         PAGE DE CONTACT                                    */
+/* ========================================================================== */
 
-/* Bouton de retour à l'accueil. */
+/* -------------------------------------------------------------------------- */
+/* Bouton de retour                                                           */
+/* -------------------------------------------------------------------------- */
+
+/* Bouton pour revenir à l'accueil */
 .back-button {
-  /* Place le texte et l'icône sur la même ligne. */
+  /* Met le texte et l'icône sur une ligne */
   display: inline-flex;
   width: fit-content;
   align-items: center;
   gap: 10px;
 
-  /* Espace autour et à l'intérieur du bouton. */
+  /* Espace du bouton */
   margin: 20px 0 5px;
   padding: 8px 12px;
 
-  /* Apparence du bouton. */
+  /* Style du bouton */
   border: 2px solid #3f73b1;
   border-radius: 8px;
   background: linear-gradient(135deg, #5d94d3, #3f73b1);
@@ -26,7 +32,7 @@
     border-color 0.2s ease;
 }
 
-/* Change l'apparence du bouton au survol. */
+/* Apparence au survol */
 .back-button:hover {
   background: linear-gradient(135deg, #6ea4e2, #2f5989);
   border-color: #2f5989;
@@ -34,51 +40,57 @@
   box-shadow: 0 7px 12px rgba(48, 55, 70, 0.3);
 }
 
-/* Réduit l'effet de déplacement pendant le clic. */
+/* Réduit le déplacement au clic */
 .back-button:active {
   transform: translateY(0);
   box-shadow: 0 2px 4px rgba(48, 55, 70, 0.2);
 }
 
-/* Formulaire de contact. */
+/* -------------------------------------------------------------------------- */
+/* Formulaire                                                                 */
+/* -------------------------------------------------------------------------- */
+
+/* Formulaire de contact */
 form {
-  /* Organise les champs les uns sous les autres. */
+  /* Place les champs les uns sous les autres */
   display: flex;
   flex-direction: column;
   max-width: 700px;
   margin: 20px auto 0;
 }
 
-/* Groupe composé d'une étiquette et d'un champ. */
+/* Groupe label + champ */
 .form-group {
   display: flex;
   flex-direction: column;
   margin-bottom: 16px;
 }
 
-/* Espacement et mise en valeur des étiquettes. */
+/* Style des étiquettes */
 .form-group label {
   margin-bottom: 6px;
-  font-weight: bold;
 }
 
-/* Style commun aux champs texte et à la zone de message. */
+/* Style des champs */
 .form-group input,
 .form-group textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #b9c4d1;
   border-radius: 5px;
-  font: inherit;
 }
 
-/* Indique clairement le champ actuellement sélectionné. */
+/* Champ sélectionné */
 .form-group input:focus,
 .form-group textarea:focus {
   outline: 2px solid #4f83c2;
 }
 
-/* Bouton d'envoi du formulaire. */
+/* -------------------------------------------------------------------------- */
+/* Envoi du formulaire                                                        */
+/* -------------------------------------------------------------------------- */
+
+/* Bouton d'envoi */
 .contact-submit {
   width: 100%;
   padding: 12px;
@@ -94,7 +106,7 @@ form {
     transform 0.2s ease;
 }
 
-/* Change la couleur et soulève légèrement le bouton au survol. */
+/* Apparence au survol */
 .contact-submit:hover {
   background-color: #2f5989;
   transform: translateY(-2px);
